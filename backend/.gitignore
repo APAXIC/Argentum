@@ -1,0 +1,11 @@
+# compiled output
+/dist
+/node_modules
+/build
+
+
+# dotenv environment variable files
+.env
+
+# automatically created build info
+tsconfig.build.tsbuildinfo
