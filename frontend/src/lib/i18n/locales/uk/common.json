@@ -1,0 +1,20 @@
+{
+  "buttons": {
+    "save": "Зберегти",
+    "cancel": "Скасувати",
+    "delete": "Видалити",
+    "loading": "Завантаження..."
+  },
+  "errors": {
+    "required": "Це поле є обов'язковим",
+    "somethingWentWrong": "Щось пішло не так",
+    "networkError": "Сервер недоступний. Переконайтесь що backend запущено.",
+    "unknownError": "Невідома помилка",
+    "api": {
+      "invalidCredentials": "Невірний email або пароль",
+      "userNotFound": "Невірний email або пароль",
+      "emailExists": "Користувач із таким email вже існує",
+      "userExists": "Користувач із таким email вже існує"
+    }
+  }
+}
