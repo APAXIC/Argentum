@@ -1,4 +1,16 @@
 {
+  "nav": {
+    "dashboard": "Дашборд",
+    "accounts": "Рахунки",
+    "transactions": "Транзакції",
+    "categories": "Категорії",
+    "budgets": "Бюджети",
+    "goals": "Цілі",
+    "logout": "Вийти",
+    "language": "Мова: Українська",
+    "openMenu": "Відкрити меню",
+    "closeMenu": "Закрити меню"
+  },
   "buttons": {
     "save": "Зберегти",
     "cancel": "Скасувати",

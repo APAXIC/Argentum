@@ -1,4 +1,16 @@
 {
+  "nav": {
+    "dashboard": "Dashboard",
+    "accounts": "Accounts",
+    "transactions": "Transactions",
+    "categories": "Categories",
+    "budgets": "Budgets",
+    "goals": "Goals",
+    "logout": "Log Out",
+    "language": "Language: English",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
   "buttons": {
     "save": "Save",
     "cancel": "Cancel",
