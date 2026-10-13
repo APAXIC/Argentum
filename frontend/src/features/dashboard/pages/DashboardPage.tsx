@@ -88,6 +88,7 @@ export function DashboardPage() {
 
   const accounts = accountsQuery.data?.data ?? [];
   const totalBalance = accounts.reduce((sum, a) => sum + a.balance, 0);
+  const mainCurrency = accounts[0]?.currency ?? "USD";
 
   const summary = summaryQuery.data;
 
@@ -153,14 +154,16 @@ export function DashboardPage() {
         <StatCard
           label={t("stats.totalBalance")}
           icon={Wallet}
-          value={accountsQuery.isLoading ? "…" : formatMoney(totalBalance)}
+          value={accountsQuery.isLoading ? "…" : formatMoney(totalBalance, mainCurrency)}
           hint={t("stats.activeAccounts", { count: accounts.length })}
         />
         <StatCard
           label={t("stats.incomeMonth")}
           icon={TrendingUp}
           value={
-            summaryQuery.isLoading ? "…" : formatMoney(summary?.totalIncome ?? 0)
+            summaryQuery.isLoading
+              ? "…"
+              : formatMoney(summary?.totalIncome ?? 0, mainCurrency)
           }
           valueClass="text-emerald-600"
           hint={formatPeriodLabel(period)}
@@ -171,7 +174,7 @@ export function DashboardPage() {
           value={
             summaryQuery.isLoading
               ? "…"
-              : formatMoney(summary?.totalExpenses ?? 0)
+              : formatMoney(summary?.totalExpenses ?? 0, mainCurrency)
           }
           valueClass="text-rose-600"
           hint={formatPeriodLabel(period)}
@@ -230,7 +233,7 @@ export function DashboardPage() {
                           paddingAngle={2}
                         />
                         <Tooltip
-                          formatter={(value) => formatMoney(Number(value))}
+                          formatter={(value) => formatMoney(Number(value), mainCurrency)}
                         />
                       </PieChart>
                     </ResponsiveContainer>
@@ -239,7 +242,7 @@ export function DashboardPage() {
                         {t("charts.total")}
                       </span>
                       <span className="text-lg font-semibold">
-                        {formatMoney(expensesTotal)}
+                        {formatMoney(expensesTotal, mainCurrency)}
                       </span>
                     </div>
                   </div>
@@ -263,7 +266,7 @@ export function DashboardPage() {
                           %
                         </span>
                         <span className="w-28 text-right font-medium">
-                          {formatMoney(entry.total)}
+                          {formatMoney(entry.total, mainCurrency)}
                         </span>
                       </div>
                     ))}
@@ -308,7 +311,7 @@ export function DashboardPage() {
                         tickFormatter={formatCompact}
                       />
                       <Tooltip
-                        formatter={(value) => formatMoney(Number(value))}
+                        formatter={(value) => formatMoney(Number(value), mainCurrency)}
                         cursor={{ fill: "rgba(0,0,0,0.04)" }}
                       />
                       <Legend />
