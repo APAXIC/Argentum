@@ -10,7 +10,6 @@ import {
   TrendingUp,
   TrendingDown,
   ArrowDownUp,
-  ScanLine,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -44,7 +43,6 @@ import {
   transactionFormSchema,
   type TransactionFormData,
 } from "../schemas";
-import { ReceiptScanDialog } from "../components/ReceiptScanDialog";
 import {
   SortOrder,
   TransactionSortField,
@@ -69,7 +67,6 @@ export function TransactionsPage() {
     offset: 0,
   });
   const [createOpen, setCreateOpen] = useState(false);
-  const [scanOpen, setScanOpen] = useState(false);
   const [prefill, setPrefill] = useState<Partial<TransactionFormData> | null>(
     null,
   );
@@ -103,14 +100,6 @@ export function TransactionsPage() {
           <p className="text-muted-foreground">{t("subtitle")}</p>
         </div>
         <div className="flex shrink-0 gap-2">
-          <Button
-            variant="outline"
-            onClick={() => setScanOpen(true)}
-            disabled={accounts.length === 0}
-          >
-            <ScanLine className="mr-2 h-4 w-4" />
-            {t("scanReceipt")}
-          </Button>
           <Button
             onClick={() => {
               setPrefill(null);
@@ -191,17 +180,6 @@ export function TransactionsPage() {
           </Button>
         </div>
       )}
-
-      <ReceiptScanDialog
-        open={scanOpen}
-        categories={categories}
-        onClose={() => setScanOpen(false)}
-        onConfirm={(scanned) => {
-          setScanOpen(false);
-          setPrefill(scanned);
-          setCreateOpen(true);
-        }}
-      />
       <TransactionFormDialog
         open={createOpen}
         mode="create"
